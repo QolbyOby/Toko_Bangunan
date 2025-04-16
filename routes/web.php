@@ -10,7 +10,7 @@ use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     // return view('welcome');
-    return redirect()->route('backend.login');
+    return redirect()->route('beranda');
 });
 Route::get('backend/beranda', [BerandaController::class, 'berandaBackend'])->name('backend.beranda')->middleware('auth');
 
@@ -41,6 +41,10 @@ Route::post('backend/laporan/cetakproduk', [ProdukController::class, 'cetakProdu
 
 //frontend
 Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+
+//API Google 
+Route::get('/auth/redirect', [CustomerController::class, 'redirect'])->name('auth.redirect'); 
+Route::get('/auth/google/callback', [CustomerController::class, 'callback'])->name('auth.callback'); 
 
 // Route::resource('user', UserController::class);
 // Route::resource('user', UserController::class, ['as' => 'backend']);
