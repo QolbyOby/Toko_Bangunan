@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PageFrontendController;
 use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
@@ -41,6 +42,11 @@ Route::post('backend/laporan/cetakproduk', [ProdukController::class, 'cetakProdu
 
 //frontend
 Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/lokasi', [PageFrontendController::class, 'lokasi'])->name('lokasi');
+Route::get('/produk/detail/{id}', [ProdukController::class, 'detail'])->name('produk.detail'); 
+Route::get('/produk/kategori/{id}', [ProdukController::class, 'produkKategori'])->name('produk.kategori');
+Route::get('/produk/all', [ProdukController::class, 'produkAll'])->name('produk.all'); 
+
 
 //API Google 
 Route::get('/auth/redirect', [CustomerController::class, 'redirect'])->name('auth.redirect'); 
